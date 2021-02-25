@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::where('user_id', Auth::id())->get(); /* l'utente loggato può vedere e modificare solo i suoi post*/
 
         return view('admin.posts.index', compact('posts'));
     }
