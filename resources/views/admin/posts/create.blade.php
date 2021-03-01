@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form action="{{route('admin.posts.store') }}" method="POST">
+        <form action="{{route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('POST')
             <div class="form-group">
@@ -21,10 +21,15 @@
                 <input class="form-control" type="text" id="title" name="title" value="{{ old('title')}}">
             </div>
             <div class="form-group">
-                <label for="paragraph">Titolo</label>
+                <label for="paragraph">Testo del post</label>
                 <textarea class="form-control " name="paragraph" id="paragraph" value="{{ old('paragraph')}}" rows="20"></textarea>
             </div>
-            <input type="submit" class="btn btn-primary">
+            <div class="form-group">
+                <label for="image_path">Immagine del post</label>
+                <input class="form-control" type="file" name="image_path" id="image_path" accept="image/*">           
+             </div>
+            <input class="form-control" type="submit" class="btn btn-primary">
+            
         </form>
         </div>
 @endsection

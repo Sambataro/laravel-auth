@@ -9,6 +9,7 @@
                 <tr>
                     <th>ID</th>
                     <th>TITOLO</th>
+                    <th>IMMAGINE</th>
                     <th>DATA CREAZIONE</th>
                     <th colspan='3'></th>
                 </tr>
@@ -18,6 +19,7 @@
                     <tr>
                         <th>{{ $post->id}}</th>
                         <th>{{ $post->title}}</th>
+                        <th><img src="{{ asset('storage/' . $post->image_path)}}" alt="" width="10%"></th>
                         <th>{{ $post->created_at->format('d-m-Y')}}</th> 
                         
                     </tr>    

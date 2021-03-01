@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -50,6 +51,8 @@ class PostController extends Controller
         $newPost = new Post();
         $data['slug'] = Str::slug($data['title']);
         $data['user_id'] = Auth::id();
+        $data['image_path'] = Storage::disk('public')->put('images', $data['image_path']); 
+
         $newPost->fill($data); /*senza fillable nel model non funzina*/
         $newPost->save();
 

@@ -18,13 +18,12 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title', 100);
             $table->string('slug', 100);
+            $table->string('image_path', 250);
             $table->text('paragraph');
             $table->timestamps();
             $table->foreign('user_id')
                   ->references('id')
                   ->on('users');
-
-            
         });
     }
 
