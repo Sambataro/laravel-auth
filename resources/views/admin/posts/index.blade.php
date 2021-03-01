@@ -17,10 +17,20 @@
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
-                        <th>{{ $post->id}}</th>
-                        <th>{{ $post->title}}</th>
-                        <th><img src="{{ asset('storage/' . $post->image_path)}}" alt="" width="10%"></th>
-                        <th>{{ $post->created_at->format('d-m-Y')}}</th> 
+                        <td>{{ $post->id}}</td>
+                        <td>{{ $post->title}}</td>
+                        <td><img src="{{ asset('storage/' . $post->image_path)}}" alt="" width="10%"></td>
+                        <td>{{ $post->created_at->format('d-m-Y')}}</td> 
+                        <td>
+                            <a href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
+                        </td>
+                        <td>
+                    <form action="{{ route('admin.posts.destroy', $post->id )}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
                         
                     </tr>    
                 @endforeach
