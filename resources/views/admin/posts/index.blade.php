@@ -22,6 +22,9 @@
                         <td><img src="{{ asset('storage/' . $post->image_path)}}" alt="" width="10%"></td>
                         <td>{{ $post->created_at->format('d-m-Y')}}</td> 
                         <td>
+                            <a href="{{ route('admin.posts.show',$post->id) }}" class="btn btn-primary"> <i class="fas fa-info-circle"></i> </a>
+                        </td>
+                        <td>
                             <a href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
                         </td>
                         <td>
