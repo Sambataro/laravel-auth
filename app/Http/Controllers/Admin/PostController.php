@@ -8,6 +8,9 @@ use App\Post;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\MailTest;
+use Illuminate\Support\Facades\Mail; 
+
 
 class PostController extends Controller
 {
@@ -54,9 +57,14 @@ class PostController extends Controller
         $data['image_path'] = Storage::disk('public')->put('images', $data['image_path']); 
 
         $newPost->fill($data); /*senza fillable nel model non funzina*/
-        $newPost->save();
+        $saved = $newPost->save();
 
-        return redirect()->route('admin.posts.index');
+        if ($saved) {
+            Mail::to('pippo@gmail.com')->send(new MailTest());
+            return redirect()->route('admin.posts.index')
+            ->with('message', 'Post ' . $newPost->title . ' creato correttamente');
+        }
+        
     }
 
     /**
