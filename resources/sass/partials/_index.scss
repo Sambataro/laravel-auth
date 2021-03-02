@@ -1,0 +1,11 @@
+
+.blog-card {
+    display: flex;
+    justify-content: center;
+    width: calc(100 / 4);
+    height: 10%;
+    
+    img {
+        width: 100%;
+    }
+}

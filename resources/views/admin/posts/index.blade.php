@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message')}}
+        </div>
+    @endif
+
     <div class="row justify-content-center">
         <h1>i miei post</h1>
         <table class="table table-striped table-bordered">
@@ -25,7 +32,7 @@
                             <a href="{{ route('admin.posts.show',$post->id) }}" class="btn btn-primary"> <i class="fas fa-info-circle"></i> </a>
                         </td>
                         <td>
-                            <a href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-primary"> <i class="fas fa-edit"></i> </a>
+                            <a href="{{ route('admin.posts.edit',$post->id) }}" class="btn btn-secondary"> <i class="fas fa-edit"></i> </a>
                         </td>
                         <td>
                     <form action="{{ route('admin.posts.destroy', $post->id )}}" method="POST">
