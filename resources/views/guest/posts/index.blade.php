@@ -13,7 +13,7 @@
              <div class="card-body">
                  <img class="" src="{{ asset('storage/' . $post->image_path)}}" alt="" style="width: 150px; height: 150px">
             </div>
-            <a href="{{ route('posts.show',$post->slug) }}" class="btn btn-primary justify-content-center" style="width: 50%"> Leggi </a>
+            <a href="{{ route('posts.show',$post->slug) }}" class="btn btn-primary justify-content-center mx-auto mb-5" style="width: 50%"> Leggi </a>
          </div>
          @endforeach
     </div>
